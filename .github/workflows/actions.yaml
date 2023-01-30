@@ -1,0 +1,27 @@
+---
+name: "Terraform"
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency: ci-${{ github.ref }}
+
+jobs:
+  terraform-plan:
+    runs-on: ubuntu-latest
+
+    # The Secret Actions GitHub example has three steps
+    steps:
+      # Show how to print unmasked GitHub secrets to the console
+      - name: Step 1 - Echo out a GitHub Actions Secret to the logs
+        run: |
+          echo "The GitHub Action Secret will be masked:  "
+          echo ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          echo "Trick to echo GitHub Actions Secret:  "
