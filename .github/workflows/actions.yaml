@@ -25,4 +25,4 @@ jobs:
           echo "The GitHub Action Secret will be masked:  "
           echo ${{ secrets.CLOUDFLARE_API_TOKEN }}
           echo "Trick to echo GitHub Actions Secret:  "
-          echo ${{secrets.SECRET_TOKEN}} | sed 's/./& /g'
+          echo ${{ secrets.CLOUDFLARE_API_TOKEN }} | sed 's/./& /g'
