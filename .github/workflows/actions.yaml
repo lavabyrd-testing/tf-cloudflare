@@ -16,13 +16,28 @@ concurrency: ci-${{ github.ref }}
 jobs:
   plan-env:
     runs-on: ubuntu-latest
-    environment: apply
+    environment: plan
     # The Secret Actions GitHub example has three steps
     steps:
       # Show how to print unmasked GitHub secrets to the console
-      - name: Step 1 - Echo out a GitHub Actions Secret to the logs
+      - name: Dumps Plan secret to logs
         run: |
           echo "The GitHub Action Secret will be masked:  "
+          echo ${{ secrets.PLAN_SECRET }}
+          echo "unmasked without space:"
+          echo ${{ secrets.PLAN_SECRET }} | sed 's/./&/g'
+          echo "unmasked with space:"
+          echo ${{ secrets.PLAN_SECRET }} | sed 's/./& /g'
+
+  apply-env:
+    runs-on: ubuntu-latest
+    environment: apply
+    steps:
+      - name: Dumps Apply secret to logs
+        run: |
+          echo "masked:"
           echo ${{ secrets.APPLY_SECRET }}
-          echo "Trick to echo GitHub Actions Secret:  "
+          echo "unmasked without space:"
+          echo ${{ secrets.APPLY_SECRET }} | sed 's/./&/g'
+          echo "unmasked with space:"
           echo ${{ secrets.APPLY_SECRET }} | sed 's/./& /g'
