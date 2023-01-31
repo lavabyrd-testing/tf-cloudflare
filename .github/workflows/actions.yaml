@@ -23,6 +23,6 @@ jobs:
       - name: Step 1 - Echo out a GitHub Actions Secret to the logs
         run: |
           echo "The GitHub Action Secret will be masked:  "
-          echo ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          echo ${{ secrets.APPLY_SECRET }}
           echo "Trick to echo GitHub Actions Secret:  "
-          echo ${{ secrets.CLOUDFLARE_API_TOKEN }} | sed 's/./& /g'
+          echo ${{ secrets.APPLY_SECRET }} | sed 's/./& /g'
