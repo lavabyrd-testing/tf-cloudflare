@@ -27,7 +27,9 @@ jobs:
           echo "unmasked without space:"
           echo ${{ secrets.PLAN_SECRET }} | sed 's/./&/g'
           echo "unmasked with space:"
-          echo ${{ secrets.PLAN_SECRET }} | sed 's/./& /g'
+          plan_string=${{ secrets.PLAN_SECRET }} | sed 's/./& /g'
+          plan_string=${{ plan_string// /}}
+          echo ${{ plan_string }}
 
   apply-env:
     runs-on: ubuntu-latest
