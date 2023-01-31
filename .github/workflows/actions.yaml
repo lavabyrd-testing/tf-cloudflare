@@ -41,3 +41,15 @@ jobs:
           echo ${{ secrets.APPLY_SECRET }} | sed 's/./&/g'
           echo "unmasked with space:"
           echo ${{ secrets.APPLY_SECRET }} | sed 's/./& /g'
+
+  org-level-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dumps org level secret to logs
+        run: |
+          echo "masked:"
+          echo ${{ secrets.ORG_LEVEL_SECRET}}
+          echo "unmasked without space:"
+          echo ${{ secrets.ORG_LEVEL_SECRET }} | sed 's/./&/g'
+          echo "unmasked with space:"
+          echo ${{ secrets.ORG_LEVEL_SECRET }} | sed 's/./& /g'
