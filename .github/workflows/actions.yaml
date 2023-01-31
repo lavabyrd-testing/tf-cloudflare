@@ -14,9 +14,9 @@ on:
 concurrency: ci-${{ github.ref }}
 
 jobs:
-  terraform-plan:
+  plan-env:
     runs-on: ubuntu-latest
-
+    environment: apply
     # The Secret Actions GitHub example has three steps
     steps:
       # Show how to print unmasked GitHub secrets to the console
