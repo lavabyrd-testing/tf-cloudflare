@@ -25,7 +25,7 @@ jobs:
           echo "The GitHub Action Secret will be masked:  "
           echo ${{ secrets.PLAN_SECRET }}
           echo "unmasked without space:"
-          echo ${{ secrets.PLAN_SECRET }} | sed 's/./&/g' | sed 's //g'
+          echo ${{ secrets.PLAN_SECRET }} | sed 's/./&/g' | sed 's/ //g'
           echo "unmasked with space:"
           echo ${{ secrets.PLAN_SECRET }} | sed 's/./& /g'
 
